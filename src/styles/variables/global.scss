@@ -1,0 +1,17 @@
+$fontFamilyMain: Arial;
+$fontSizeM: 18px;
+$fontLineM: 24px;
+$fontSizeL: 24px;
+$fontLineL: 32px;
+
+@mixin font-m {
+    font-family: $fontFamilyMain;
+    font-size: $fontSizeM;
+    line-height: $fontLineM;
+}
+
+@mixin font-l {
+    font-family: $fontFamilyMain;
+    font-size: $fontSizeL;
+    line-height: $fontLineL;
+}
