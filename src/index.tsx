@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
-import { App } from "./App";
 import { createRoot } from 'react-dom/client';
-import ThemeProvider from "./styles/theme/ThemeProvider";
+import { App } from "./01_app/App";
+import { ThemeProvider } from "01_app/providers/ThemeProvider";
 
 const domNode = document.getElementById('root');
 const root = createRoot(domNode);
