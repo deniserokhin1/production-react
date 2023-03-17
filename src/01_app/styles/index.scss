@@ -1,14 +1,14 @@
-@import "reset";
-@import "global";
-@import "themes/light";
-@import "themes/dark";
+@import 'reset';
+@import 'global';
+@import 'themes/light';
+@import 'themes/dark';
 
 .app {
     font: var(--font-m);
     background: var(--bg-color);
     color: var(--primary-color);
     min-height: 100vh;
-    transition: var(--color-transition)
+    transition: var(--color-transition);
 }
 
 .content-page {
@@ -16,6 +16,9 @@
 }
 
 .page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-grow: 1;
     padding: 20px;
 }
