@@ -2,5 +2,9 @@
   "translate": "Translate",
   "MAINPAGE": "Main Page",
   "Язык": "English",
-  "Страница не найдена": "Not found page"
+  "Страница не найдена": "Not found page",
+  "Главная": "Main",
+  "О нас": "About us",
+  "Произошла непредвиденная ошибка": "Fucking Error",
+  "Перезагрузить страницу": "Reload page"
 }

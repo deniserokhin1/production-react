@@ -1,0 +1,14 @@
+.PageError {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+    font: var(--font-l);
+    background: var(--inverted-bg-color);
+}
+
+.title {
+    color: var(--inverted-primary-color)
+}
