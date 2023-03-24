@@ -3,8 +3,12 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { IBuildOptions } from './types/config'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
-export function buildPlugins({ paths, isDev }: IBuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({
+    paths,
+    isDev,
+}: IBuildOptions): webpack.WebpackPluginInstance[] {
     return [
         new HtmlWebpackPlugin({
             template: paths.html,
@@ -19,9 +23,11 @@ export function buildPlugins({ paths, isDev }: IBuildOptions): webpack.WebpackPl
             __IS_DEV__: JSON.stringify(isDev),
         }),
         new webpack.HotModuleReplacementPlugin(),
-        isDev &&
-            new ReactRefreshWebpackPlugin({
-                overlay: false,
-            }),
+        new ReactRefreshWebpackPlugin({
+            overlay: false,
+        }),
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+        }),
     ]
 }
