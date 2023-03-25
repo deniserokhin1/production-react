@@ -22,7 +22,9 @@
         "i18next/no-literal-string": [
             "error",
             { "markupOnly": true, "ignoreAttribute": ["data-testid"] }
-        ]
+        ],
+        "react/display-name": "off",
+        "linebreak-style": ["error", "windows"]
     },
     "overrides": [
         {

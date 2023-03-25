@@ -20,7 +20,10 @@ export const Sidebar: FC<SidebarProps> = () => {
             data-testid="sidebar"
             className={classNames(cls.Sidebar, { [cls.isOpen]: isOpen })}
         >
-            <Button data-testid="sidebar-toggle" onClick={toggle}>
+            <Button
+                data-testid="sidebar-toggle"
+                onClick={toggle}
+            >
                 toggle
             </Button>
             <div className={cls.switchers}>
