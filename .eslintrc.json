@@ -24,7 +24,7 @@
             { "markupOnly": true, "ignoreAttribute": ["data-testid"] }
         ],
         "react/display-name": "off",
-        "linebreak-style": ["error", "unix"]
+        "linebreak-style": ["error", "windows"]
     },
     "overrides": [
         {
