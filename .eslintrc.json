@@ -23,8 +23,7 @@
             "error",
             { "markupOnly": true, "ignoreAttribute": ["data-testid"] }
         ],
-        "react/display-name": "off",
-        "linebreak-style": ["error", "windows"]
+        "react/display-name": "off"
     },
     "overrides": [
         {
