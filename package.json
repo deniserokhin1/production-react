@@ -19,7 +19,7 @@
         "build-storybook": "build-storybook -c ./config/storybook"
     },
     "keywords": [],
-    "author": "",
+    "author": "me",
     "license": "ISC",
     "devDependencies": {
         "@babel/core": "^7.21.3",
