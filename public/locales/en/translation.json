@@ -1,10 +1,11 @@
 {
-  "translate": "Translate",
-  "MAINPAGE": "Main Page",
-  "Язык": "English",
-  "Страница не найдена": "Not found page",
-  "Главная": "Main",
-  "О нас": "About us",
-  "Произошла непредвиденная ошибка": "Fucking Error",
-  "Перезагрузить страницу": "Reload page"
+    "translate": "Translate",
+    "MAINPAGE": "Main Page",
+    "Язык": "English",
+    "Страница не найдена": "Not found page",
+    "Главная": "Main",
+    "О нас": "About us",
+    "Произошла непредвиденная ошибка": "Fucking Error",
+    "Перезагрузить страницу": "Reload page",
+    "Короткий язык": "En"
 }
