@@ -9,11 +9,7 @@ interface MainPageProps {
 const MainPage: FC<MainPageProps> = () => {
     const { t } = useTranslation()
 
-    return (
-        <div className={cls.container}>
-            {t('MAINPAGE')}
-        </div>
-    )
+    return <div className={cls.container}>{t('MAINPAGE')}</div>
 }
 
 export default MainPage

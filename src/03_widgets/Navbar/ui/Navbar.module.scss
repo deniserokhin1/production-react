@@ -3,7 +3,7 @@
     height: var(--navbar-height);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 0 20px;
     background: var(--inverted-bg-color);
     transition: var(--color-transition);
