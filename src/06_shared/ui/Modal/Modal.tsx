@@ -9,12 +9,15 @@ interface ModalProps {
     children?: ReactNode
     isOpen?: boolean
     onClose?: () => void
+    lazy?: boolean
 }
 
 const ANIMATION_DELAY = 300
 
-export const Modal: FC<ModalProps> = ({ children, onClose, isOpen }) => {
+export const Modal: FC<ModalProps> = ({ children, onClose, isOpen, lazy }) => {
     const [isClosing, setIsClosing] = useState(false)
+    const [isOpening, setIsOpening] = useState(false)
+    const [isMounted, setIsMounted] = useState(false)
     const timerRef = useRef<ReturnType<typeof setTimeout>>()
 
     const { theme } = useTheme()
@@ -42,18 +45,28 @@ export const Modal: FC<ModalProps> = ({ children, onClose, isOpen }) => {
 
     useEffect(() => {
         if (isOpen) {
+            timerRef.current = setTimeout(() => {
+                setIsOpening(true)
+            }, 0)
             window.addEventListener('keydown', onKeyDown)
         }
         return () => {
+            setIsOpening(false)
             clearTimeout(timerRef.current)
             window.removeEventListener('keydown', onKeyDown)
         }
     }, [isOpen, onKeyDown])
 
+    useEffect(() => {
+        setIsMounted(isOpen)
+    }, [isOpen])
+
     const mods: Record<string, string | boolean> = {
-        [cls.opened]: isOpen,
+        [cls.opened]: isOpening,
         [cls.isClosing]: isClosing,
     }
+
+    if (lazy && !isMounted) return null
 
     return (
         <Portal>
