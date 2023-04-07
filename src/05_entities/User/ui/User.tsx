@@ -1,15 +1,10 @@
-import { classNames } from '06_shared/lib/classNames/classNames';
-import cls from './User.module.scss';
-import {FC} from 'react';
-
+import { classNames } from '06_shared/lib/classNames/classNames'
+import { FC } from 'react'
 
 interface UserProps {
- className?: string;
+    className?: string
 }
 
-export const User:FC<UserProps> = () => {
-
- return (
- <div className={classNames(cls.User)}></div> 
- );
+export const User: FC<UserProps> = () => {
+    return <div className={classNames('')}></div>
 }
