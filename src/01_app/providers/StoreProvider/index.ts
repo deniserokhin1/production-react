@@ -1,3 +1,3 @@
 export { StoreProvider } from './ui/StoreProvider'
-export { createRedxuStore } from './config/store'
+export { createRedxuStore, useAppDispatch, useAppSelector } from './config/store'
 export { StateSchema } from './config/StateSchema'

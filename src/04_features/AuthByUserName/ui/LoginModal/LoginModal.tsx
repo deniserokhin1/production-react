@@ -1,7 +1,7 @@
 import { classNames } from '06_shared/lib/classNames/classNames'
 import { FC } from 'react'
 import { Modal } from '06_shared/ui/Modal/Modal'
-import { LoginFrorm } from '../LoginForm/LoginFrorm'
+import { LoginForm } from '../LoginForm/LoginForm'
 
 interface LoginModalProps {
     className?: string
@@ -18,7 +18,7 @@ export const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose, className }) 
             onClose={onClose}
             lazy={true}
         >
-            <LoginFrorm />
+            <LoginForm />
         </Modal>
     )
 }
