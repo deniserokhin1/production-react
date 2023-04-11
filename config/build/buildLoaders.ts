@@ -40,6 +40,7 @@ export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
                             locales: ['ru', 'en'],
                             keyAsDefaultValue: true,
                         },
+                        'react-refresh/babel',
                     ],
                 ],
             },

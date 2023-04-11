@@ -1,20 +1,30 @@
 import { ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { StateSchema } from './StateSchema'
 import { userReducer } from '05_entities/User'
-import { loginReducer } from '04_features/AuthByUserName/model/slice/loginSlice'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import { createReducerManager } from './redcuerManager'
 
-export const createRedxuStore = (initialState?: StateSchema) => {
+export const createRedxuStore = (
+    initialState?: StateSchema,
+    asyncReducers?: ReducersMapObject<StateSchema>
+) => {
     const rootReducer: ReducersMapObject<StateSchema> = {
+        ...asyncReducers,
         user: userReducer,
-        loginForm: loginReducer,
     }
 
-    return configureStore<StateSchema>({
-        reducer: rootReducer,
+    const reducerManager = createReducerManager(rootReducer)
+
+    const store = configureStore<StateSchema>({
+        reducer: reducerManager.reduce,
         devTools: __IS_DEV__,
         preloadedState: initialState,
     })
+
+    //@ts-ignore
+    store.reducerManager = reducerManager
+
+    return store
 }
 
 const store = createRedxuStore()
