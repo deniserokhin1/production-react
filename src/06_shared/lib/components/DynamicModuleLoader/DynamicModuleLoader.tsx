@@ -5,7 +5,7 @@ import {
     StateSchemaKey,
 } from '01_app/providers/StoreProvider/config/StateSchema'
 import { Reducer } from '@reduxjs/toolkit'
-import { useAppDispatch } from '01_app/providers/StoreProvider'
+import { useAppDispatch } from '06_shared/lib/hooks'
 
 export type ReducersList = {
     [name in StateSchemaKey]?: Reducer

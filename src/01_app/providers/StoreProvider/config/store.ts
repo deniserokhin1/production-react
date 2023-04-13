@@ -1,7 +1,6 @@
 import { ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { StateSchema } from './StateSchema'
 import { userReducer } from '05_entities/User'
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { createReducerManager } from './redcuerManager'
 
 export const createRedxuStore = (
@@ -29,8 +28,5 @@ export const createRedxuStore = (
 
 const store = createRedxuStore()
 
-type RootState = ReturnType<typeof store.getState>
-type AppDispatch = typeof store.dispatch
-
-export const useAppDispatch = () => useDispatch<AppDispatch>()
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

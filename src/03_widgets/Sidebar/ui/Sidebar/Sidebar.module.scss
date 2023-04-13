@@ -36,29 +36,6 @@
     margin-left: 0;
 }
 
-.item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
-
-    &:not(:last-child) {
-        margin-bottom: 10px;
-    }
-}
-
-.link {
-    margin-left: 0;
-    opacity: 0;
-    width: 0;
-    white-space: nowrap;
-    transition: opacity 0.2s;
-}
-
-
-.icon {
-    fill: var(--inverted-primary-color);
-}
-
 .isOpen {
     .switchers {
         flex-direction: row;
@@ -70,12 +47,6 @@
 
     .collapseBtn {
         bottom: 30px;
-    }
-
-    .link {
-        margin-left: 10px;
-        opacity: 1;
-        width: fit-content;
     }
 
     .links {

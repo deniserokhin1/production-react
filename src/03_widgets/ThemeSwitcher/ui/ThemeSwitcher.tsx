@@ -1,5 +1,5 @@
 import cls from './ThemeSwitcher.module.scss'
-import { FC } from 'react'
+import { memo } from 'react'
 import { Theme, useTheme } from '01_app/providers/ThemeProvider'
 import DarkIcon from '06_shared/assets/icons/theme-dark.svg'
 import LightIcon from '06_shared/assets/icons/theme-light.svg'
@@ -10,14 +10,12 @@ interface ThemeSwitcherProps {
     className?: string
 }
 
-export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
+export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme()
 
     return (
         <Button className={className} theme={ThemeButton.CLEAR} onClick={toggleTheme}>
-            <div className={cls.wrapper}>
-                {theme === Theme.DARK ? <DarkIcon /> : <LightIcon />}
-            </div>
+            <div className={cls.wrapper}>{theme === Theme.DARK ? <DarkIcon /> : <LightIcon />}</div>
         </Button>
     )
-}
+})

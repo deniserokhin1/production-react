@@ -1,4 +1,5 @@
 import { LoginSchema } from '04_features/AuthByUserName'
+import { ProfileSchema } from '05_entities/Profile'
 import { UserSchema } from '05_entities/User'
 import {
     AnyAction,
@@ -11,6 +12,7 @@ import {
 export interface StateSchema {
     user: UserSchema
     loginForm?: LoginSchema
+    profile?: ProfileSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
