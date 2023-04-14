@@ -4,7 +4,6 @@ import { userActions } from '05_entities/User'
 import { TestAsyncThunk } from '06_shared/lib/tests/testAsyncThunk/testAsyncThunk'
 
 jest.mock('axios')
-
 const mockedAxios = jest.mocked(axios)
 
 describe('loginByUsername.test', () => {
@@ -38,9 +37,9 @@ describe('loginByUsername.test', () => {
 
     test('success login', async () => {
         const userValue = { username: 'admin', id: '1' }
-        mockedAxios.post.mockReturnValue(Promise.resolve({ data: userValue }))
 
         const thunk = new TestAsyncThunk(loginByUsername)
+        thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }))
         const result = await thunk.callThunk({ password: '123', username: 'admin' })
 
         expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue))
@@ -50,9 +49,8 @@ describe('loginByUsername.test', () => {
         expect(result.payload).toEqual(userValue)
     })
     test('error login', async () => {
-        mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }))
-
         const thunk = new TestAsyncThunk(loginByUsername)
+        thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
         const result = await thunk.callThunk({ password: '123', username: 'admin' })
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2)

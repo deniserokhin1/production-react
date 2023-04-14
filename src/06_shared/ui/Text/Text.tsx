@@ -14,12 +14,7 @@ interface TextProps {
     theme?: TextTheme
 }
 
-export const Text: FC<TextProps> = ({
-    className,
-    text,
-    title,
-    theme = TextTheme.PRIMARY,
-}) => {
+export const Text: FC<TextProps> = ({ className, text, title, theme = TextTheme.PRIMARY }) => {
     return (
         <div className={classNames(cls.Text, {}, [className, cls[theme]])}>
             {title && <p className={cls.title}>{title}</p>}

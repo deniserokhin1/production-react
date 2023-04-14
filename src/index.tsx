@@ -8,16 +8,16 @@ import './06_shared/config/i18n/i18n'
 import { StoreProvider } from '01_app/providers/StoreProvider'
 
 const domNode = document.getElementById('root')
-const root = createRoot(domNode)
+const root = createRoot(domNode as HTMLElement)
 
 root.render(
-    <StoreProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+        <StoreProvider>
             <ErrorBoundary>
                 <ThemeProvider>
                     <App />
                 </ThemeProvider>
             </ErrorBoundary>
-        </BrowserRouter>
-    </StoreProvider>
+        </StoreProvider>
+    </BrowserRouter>
 )

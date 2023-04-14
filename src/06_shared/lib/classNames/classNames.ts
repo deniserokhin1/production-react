@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-type Mods = Record<string, string | boolean>
+export type Mods = Record<string, boolean | string | undefined>
 
-export const classNames = (cls: string, mods: Mods = {}, additional: string[] = []): string => {
+export const classNames = (
+    cls: string,
+    mods: Mods = {},
+    additional: Array<string | undefined> = []
+): string => {
     return [
         cls,
         ...additional.filter(Boolean),

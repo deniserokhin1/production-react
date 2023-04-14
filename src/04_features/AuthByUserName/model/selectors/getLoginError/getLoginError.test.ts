@@ -1,5 +1,4 @@
 import { StateSchema } from '01_app/providers/StoreProvider'
-import { DeepPartial } from '@reduxjs/toolkit'
 import { getLoginError } from './getLoginError'
 
 describe('getLoginError.test', () => {

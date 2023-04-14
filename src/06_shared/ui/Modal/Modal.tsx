@@ -1,6 +1,6 @@
 import { classNames } from '06_shared/lib/classNames/classNames'
 import cls from './Modal.module.scss'
-import { FC, ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import { FC, MutableRefObject, ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import { Portal } from '../Portal'
 import { useTheme } from '01_app/providers/ThemeProvider'
 
@@ -14,11 +14,11 @@ interface ModalProps {
 
 const ANIMATION_DELAY = 300
 
-export const Modal: FC<ModalProps> = ({ children, onClose, isOpen, lazy }) => {
+export const Modal: FC<ModalProps> = ({ children, onClose, isOpen = false, lazy }) => {
     const [isClosing, setIsClosing] = useState(false)
     const [isOpening, setIsOpening] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
-    const timerRef = useRef<ReturnType<typeof setTimeout>>()
+    const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
 
     const { theme } = useTheme()
 
@@ -61,7 +61,7 @@ export const Modal: FC<ModalProps> = ({ children, onClose, isOpen, lazy }) => {
         setIsMounted(isOpen)
     }, [isOpen])
 
-    const mods: Record<string, string | boolean> = {
+    const mods: Record<string, boolean | undefined> = {
         [cls.opened]: isOpening,
         [cls.isClosing]: isClosing,
     }

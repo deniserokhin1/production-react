@@ -1,25 +1,27 @@
-import { profileReducer } from '05_entities/Profile'
-import { classNames } from '06_shared/lib/classNames/classNames'
+import { ProfileCard, fetchProfileData, profileReducer } from '05_entities/Profile'
 import {
     DynamicModuleLoader,
     ReducersList,
 } from '06_shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
-import { memo } from 'react'
+import { useAppDispatch } from '06_shared/lib/hooks'
+import { memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const reducers: ReducersList = {
     profile: profileReducer,
 }
 
-interface ProfilePageProps {
-    className?: string
-}
-
-const ProfilePage = memo((props: ProfilePageProps) => {
+const ProfilePage = memo(() => {
     const { t } = useTranslation()
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(fetchProfileData())
+    }, [dispatch])
+
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={classNames('')}>{t('ProfilePage')}</div>
+            <ProfileCard />
         </DynamicModuleLoader>
     )
 })
