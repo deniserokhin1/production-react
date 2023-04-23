@@ -4,7 +4,7 @@ import cls from './MainPage.module.scss'
 const MainPage = () => {
     const { t } = useTranslation()
 
-    return <div className={cls.container}>{t('MAINPAGE')}</div>
+    return <div className={cls.container}>{t('Главная')}</div>
 }
 
 export default MainPage

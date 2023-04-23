@@ -5,15 +5,27 @@
 
 .text {
     font: var(--font-m);
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .error {
     .title {
-        color: var(--red-light);
+        color: var(--red-dark);
     }
 
     .text {
         color: var(--red-dark);
     }
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
 }

@@ -20,6 +20,13 @@
     border-radius: 8px;
 }
 
+.outline_red {
+    border: 1px solid var(--red-dark);
+    color: var(--red-dark);
+    background: transparent;
+    border-radius: 8px;
+}
+
 .background {
     background: var(--bg-color);
     color: var(--primary-color);

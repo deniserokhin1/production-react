@@ -1,7 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 import { classNames } from '06_shared/lib/classNames/classNames'
 import cls from './Sidebar.module.scss'
-import { FC, memo, useMemo, useState } from 'react'
+import { memo, useMemo, useState } from 'react'
 import { ThemeSwitcher } from '03_widgets/ThemeSwitcher'
 import { LangSwitcher } from '03_widgets/LangSwitcher/ui/LangSwitcher'
 import { Button } from '06_shared/ui/Button'
@@ -27,7 +27,10 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     )
 
     return (
-        <div data-testid="sidebar" className={classNames(cls.Sidebar, { [cls.isOpen]: isOpen })}>
+        <div
+            data-testid="sidebar"
+            className={classNames(cls.Sidebar, { [cls.isOpen]: isOpen })}
+        >
             <div className={cls.links}>{itemsList}</div>
             <Button
                 data-testid="sidebar-toggle"

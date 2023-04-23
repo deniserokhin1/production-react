@@ -6,7 +6,10 @@ declare module '*.scss' {
     export = classNames
 }
 
-declare module '*.svg' {
+declare module '*.svg'
+declare module '*.png'
+declare module '*.jpg'
+declare module '*.jpeg' {
     const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>
     export default content
 }

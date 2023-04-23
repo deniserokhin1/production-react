@@ -1,6 +1,5 @@
 {
   "translate": "Translate",
-  "MAINPAGE": "Main Page",
   "Язык": "English",
   "Страница не найдена": "Not found page",
   "Главная": "Main",
@@ -14,6 +13,9 @@
   "Форма авторизации": "Authorization form",
   "Вы ввели неверный логин или пароль": "You have entered an incorrect login or password",
   "Выйти": "Logout",
-  "Редактировать": "Edit",
-  "Профиль": "Profile"
+  "Профиль": "Profile",
+  "Ваш возраст": "Your age",
+  "Ваш город": "Your city",
+  "Введите имя пользователя": "Enter username",
+  "Введите ссылку на аватарку": "Enter link to avatar"
 }

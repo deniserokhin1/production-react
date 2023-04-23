@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.editBtn {
+    margin-left: auto;
+}
+
+.btnWrapper {
+    display: flex;
+    column-gap: 10px;
+}
