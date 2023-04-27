@@ -1,6 +1,7 @@
 import webpack from 'webpack'
 import { IBuildOptions } from './types/config'
 import { buildCssLoaders } from './loaders/buildCssLoader'
+import { buildBabelLoader } from './loaders/buildBabelLoader'
 
 export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
     const fileLoader = {
@@ -26,26 +27,7 @@ export function buildLoaders({ isDev }: IBuildOptions): webpack.RuleSetRule[] {
 
     const cssLoader = buildCssLoaders(isDev)
 
-    const babelLoader = {
-        test: /\.(js|jsx|tsx)$/,
-        exclude: /node_modules/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env'],
-                plugins: [
-                    [
-                        'i18next-extract',
-                        {
-                            locales: ['ru', 'en'],
-                            keyAsDefaultValue: true,
-                        },
-                        'react-refresh/babel',
-                    ],
-                ],
-            },
-        },
-    }
+    const babelLoader = buildBabelLoader(isDev)
 
     return [babelLoader, typeScriptLoader, cssLoader, svgLoader, fileLoader]
 }

@@ -109,6 +109,7 @@ const ProfilePage = memo(() => {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <ProfilePageHeader />
+            
             {!!validateErrors?.length &&
                 validateErrors.map((error) => (
                     <Text
@@ -117,6 +118,7 @@ const ProfilePage = memo(() => {
                         key={error}
                     />
                 ))}
+
             <ProfileCard
                 data={formData}
                 error={error}
