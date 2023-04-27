@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-import path from "path";
+import path from 'path'
 
 export default {
     // All imported modules in your tests should be mocked automatically
@@ -33,7 +33,8 @@ export default {
     rootDir: '../../',
     globals: {
         __IS_DEV__: true,
-        __API__: ''
+        __API__: '',
+        __PROJECT__: 'jest',
     },
 
     // Indicates whether the coverage information should be collected while executing the test

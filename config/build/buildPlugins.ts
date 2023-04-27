@@ -5,7 +5,12 @@ import { IBuildOptions } from './types/config'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 
-export function buildPlugins({ paths, isDev, apiUrl }: IBuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({
+    paths,
+    isDev,
+    apiUrl,
+    project,
+}: IBuildOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
         new HtmlWebpackPlugin({
             template: paths.html,
@@ -17,7 +22,8 @@ export function buildPlugins({ paths, isDev, apiUrl }: IBuildOptions): webpack.W
         }),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
-            __API__: JSON.stringify(apiUrl)
+            __API__: JSON.stringify(apiUrl),
+            __PROJECT__: JSON.stringify(project),
         }),
     ]
 
