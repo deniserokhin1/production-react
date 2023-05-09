@@ -1,4 +1,5 @@
 import { LoginSchema } from '04_features/AuthByUserName'
+import { ArticleDetailsSchema } from '05_entities/Article'
 import { ProfileSchema } from '05_entities/Profile'
 import { UserSchema } from '05_entities/User'
 import {
@@ -13,8 +14,11 @@ import { NavigateOptions, To } from 'react-router-dom'
 
 export interface StateSchema {
     user: UserSchema
+
+    //асинхронные редьюсеры
     loginForm?: LoginSchema
     profile?: ProfileSchema
+    articleDetails?: ArticleDetailsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

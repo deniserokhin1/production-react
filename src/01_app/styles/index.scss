@@ -17,8 +17,11 @@
 }
 
 .page-wrapper {
+    height: calc(100vh - var(--navbar-height));
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     padding: 20px;
+    overflow: auto;
 }
