@@ -1,7 +1,6 @@
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '06_shared/lib/classNames/classNames'
-import cls from './CommentList.module.scss'
 import { IComment } from '05_entities/Comment'
 import { CommentItem } from '../CommentItem/CommentItem'
 import { Text } from '06_shared/ui/Text/Text'
@@ -18,7 +17,7 @@ export const CommentList = memo((props: CommentListProps) => {
 
     if (isLoading) {
         return (
-            <div className={classNames(cls.CommentList, {}, [className])}>
+            <div className={classNames('', {}, [className])}>
                 <CommentItem isLoading />
                 <CommentItem isLoading />
                 <CommentItem isLoading />
@@ -27,7 +26,7 @@ export const CommentList = memo((props: CommentListProps) => {
     }
 
     return (
-        <div className={classNames(cls.commentList, {}, [className])}>
+        <div className={classNames('', {}, [className])}>
             {comments?.length ? (
                 comments.map((item, index) => (
                     <CommentItem comment={item} key={index} isLoading={isLoading} />
