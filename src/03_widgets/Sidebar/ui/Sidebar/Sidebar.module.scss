@@ -1,6 +1,6 @@
 .Sidebar {
     position: relative;
-    width: var(--navbar-height);
+    min-width: var(--navbar-height);
     height: calc(100vh - var(--navbar-height));
     background: var(--inverted-bg-color);
     transition: var(--color-transition);
@@ -10,7 +10,7 @@
 
 .Sidebar.isOpen {
     justify-content: flex-start;
-    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
 }
 
 .switchers {

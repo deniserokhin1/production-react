@@ -14,13 +14,15 @@ import {
     ReducersList,
 } from '06_shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { useAppDispatch, useAppSelector } from '06_shared/lib/hooks'
-import { memo, useCallback, useEffect } from 'react'
+import { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 import { Currency } from '05_entities/Currency'
 import { Country } from '05_entities/CountrySelect'
 import { getProfileErrors } from '05_entities/Profile/model/selectors/getProfileError/getProfileError'
 import { Text, TextTheme } from '06_shared/ui/Text/Text'
+import { useInitialEffect } from '06_shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { useParams } from 'react-router-dom'
 
 const reducers: ReducersList = {
     profile: profileReducer,
@@ -36,6 +38,8 @@ const ProfilePage = memo(() => {
     const readOnly = useAppSelector(getProfileReadOnly)
     const validateErrors = useAppSelector(getProfileValidateError)
 
+    const { id } = useParams<{ id: string }>()
+
     const validateErrorTranslate = {
         [ValidateProfileErrors.SERVER_ERROR]: t('Ошибка сервера'),
         [ValidateProfileErrors.INCORRECT_AGE]: t('Некорректный возраст'),
@@ -44,10 +48,9 @@ const ProfilePage = memo(() => {
         [ValidateProfileErrors.NO_DATA]: t('Нет данных'),
     }
 
-    useEffect(() => {
-        if (__PROJECT__ === 'storybook') return
-        dispatch(fetchProfileData())
-    }, [dispatch])
+    useInitialEffect(() => {
+        if (id) dispatch(fetchProfileData(id))
+    })
 
     const onChangeFirstName = useCallback(
         (value?: string) => {
@@ -109,7 +112,7 @@ const ProfilePage = memo(() => {
     return (
         <DynamicModuleLoader reducers={reducers}>
             <ProfilePageHeader />
-            
+
             {!!validateErrors?.length &&
                 validateErrors.map((error) => (
                     <Text

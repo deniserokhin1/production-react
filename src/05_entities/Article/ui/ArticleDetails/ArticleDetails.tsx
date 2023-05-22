@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react'
+import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { classNames } from '06_shared/lib/classNames/classNames'
 import cls from './ArticleDetails.module.scss'
@@ -8,14 +8,13 @@ import {
 } from '06_shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice'
 import { useAppDispatch, useAppSelector } from '06_shared/lib/hooks'
-import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById'
 import {
     getArticleDetailData,
     getArticleDetailError,
     getArticleDetailIsLoading,
 } from '../../model/selectors/articleDetails'
 import { Text, TextAlign, TextSize } from '06_shared/ui/Text/Text'
-import { Skeleton } from '06_shared/ui/Skeleton/Skeleton/Skeleton'
+import { Skeleton } from '06_shared/ui/Skeleton'
 import { Avatar } from '06_shared/ui/Avatar/Avatar'
 import KolokolIcon from '06_shared/assets/icons/kolokol.svg'
 import StarIcon from '06_shared/assets/icons/star.svg'
@@ -24,6 +23,8 @@ import { ArticleBlock, ArticleBlockType } from '../../model/types/article'
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent/ArticleCodeBlockComponent'
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent/ArticleImageBlockComponent'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent/ArticleTextBlockComponent'
+import { fetchArticleById } from '05_entities/Article/model/services/fetchArticleById/fetchArticleById'
+import { useInitialEffect } from '06_shared/lib/hooks/useInitialEffect/useInitialEffect'
 
 interface ArticleDetailsProps {
     className?: string
@@ -60,9 +61,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     // const isLoading = true
     const error = useAppSelector(getArticleDetailError)
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') dispatch(fetchArticleById(id))
-    }, [dispatch, id])
+    useInitialEffect(() => {
+        dispatch(fetchArticleById(id))
+    })
 
     let content
 

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '06_shared/lib/classNames/classNames';
 import cls from './[FTName].module.scss';
@@ -7,7 +7,7 @@ interface [FTName]Props {
    className?: string;
 }
 
-export const [FTName] = memo((props: [FTName]Props) => {
+export const [FTName]: FC<[FTName]Props> = (props) => {
    const { className } = props;
    const { t } = useTranslation()
 
@@ -16,4 +16,4 @@ export const [FTName] = memo((props: [FTName]Props) => {
 
       </div>
    );
-})
+}

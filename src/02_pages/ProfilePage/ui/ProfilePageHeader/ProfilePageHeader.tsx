@@ -7,10 +7,12 @@ import { ThemeButton } from '06_shared/ui/Button/Button'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch, useAppSelector } from '06_shared/lib/hooks'
 import {
+    getProfileData,
     getProfileReadOnly,
     profileActions,
     updateProfileData,
 } from '05_entities/Profile'
+import { getUserAuthData } from '05_entities/User'
 
 interface ProfilePageHeaderProps {
     className?: string
@@ -19,6 +21,9 @@ interface ProfilePageHeaderProps {
 export const ProfilePageHeader: FC<ProfilePageHeaderProps> = () => {
     const { t } = useTranslation('profile')
     const dispatch = useAppDispatch()
+    const authData = useAppSelector(getUserAuthData)
+    const profileData = useAppSelector(getProfileData)
+    const canEdit = authData?.id == profileData?.id
 
     const readOnly = useAppSelector(getProfileReadOnly)
 
@@ -50,13 +55,15 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = () => {
                         </Button>
                     )}
 
-                    <Button
-                        className={cls.editBtn}
-                        theme={readOnly ? ThemeButton.OUTLINE : ThemeButton.OUTLINE_RED}
-                        onClick={readOnly ? onEdit : onCanselEdit}
-                    >
-                        {readOnly ? t('Редактировать') : t('Отменить')}
-                    </Button>
+                    {canEdit && (
+                        <Button
+                            className={cls.editBtn}
+                            theme={readOnly ? ThemeButton.OUTLINE : ThemeButton.OUTLINE_RED}
+                            onClick={readOnly ? onEdit : onCanselEdit}
+                        >
+                            {readOnly ? t('Редактировать') : t('Отменить')}
+                        </Button>
+                    )}
                 </div>
             </div>
         </div>

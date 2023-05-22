@@ -11,23 +11,20 @@ interface AppRouterProps {
 
 export const AppRouter: FC<AppRouterProps> = () => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
-        const element = <div className="page-wrapper">{route.element}</div>
+        const element = (
+            <Suspense fallback={<Pageloader />}>
+                <div className="page-wrapper">{route.element}</div>
+            </Suspense>
+        )
+
         return (
             <Route
-                element={
-                    <div className="page-wrapper">
-                        {route.authOnly ? <RequireAuth>{element}</RequireAuth> : route.element}
-                    </div>
-                }
+                element={route.authOnly ? <RequireAuth>{element}</RequireAuth> : element}
                 path={route.path}
                 key={route.path}
             />
         )
     }, [])
 
-    return (
-        <Suspense fallback={<Pageloader />}>
-            <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>
-        </Suspense>
-    )
+    return <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>
 }
