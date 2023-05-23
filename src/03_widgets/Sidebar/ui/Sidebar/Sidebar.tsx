@@ -6,8 +6,9 @@ import { ThemeSwitcher } from '03_widgets/ThemeSwitcher'
 import { LangSwitcher } from '03_widgets/LangSwitcher/ui/LangSwitcher'
 import { Button } from '06_shared/ui/Button'
 import { ButtonSize, ThemeButton } from '06_shared/ui/Button/Button'
-import { SidebarItemList } from '../../model/item'
 import { SidebarItem } from '../SidebarItem/SidebarItem'
+import { useAppSelector } from '06_shared/lib/hooks'
+import { getSidebarItems } from '../../model/selectors/getSidebarItems'
 
 interface SidebarProps {
     className?: string
@@ -15,22 +16,20 @@ interface SidebarProps {
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
     const [isOpen, setIsOpne] = useState<boolean>(true)
+    const sideBarItemsList = useAppSelector(getSidebarItems)
 
     const toggle = () => setIsOpne((prev) => !prev)
 
     const itemsList = useMemo(
         () =>
-            SidebarItemList.map((item) => (
+            sideBarItemsList.map((item) => (
                 <SidebarItem item={item} isOpen={isOpen} key={item.path} />
             )),
-        [isOpen]
+        [isOpen, sideBarItemsList]
     )
 
     return (
-        <div
-            data-testid="sidebar"
-            className={classNames(cls.Sidebar, { [cls.isOpen]: isOpen })}
-        >
+        <div data-testid="sidebar" className={classNames(cls.Sidebar, { [cls.isOpen]: isOpen })}>
             <div className={cls.links}>{itemsList}</div>
             <Button
                 data-testid="sidebar-toggle"

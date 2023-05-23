@@ -3,13 +3,9 @@ import MainIcon from '06_shared/assets/icons/home.svg'
 import AboutIcon from '06_shared/assets/icons/list.svg'
 import ProfileIcon from '06_shared/assets/icons/profile.svg'
 import ArticleIcon from '06_shared/assets/icons/article.svg'
+import { SidebarItemType } from './types/sidebar'
 
-export interface SidebarItemType {
-    path: string
-    text: string
-    icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>
-    authOnly?: boolean
-}
+
 
 export const SidebarItemList: SidebarItemType[] = [
     {
@@ -23,7 +19,7 @@ export const SidebarItemList: SidebarItemType[] = [
         text: 'О нас',
     },
     {
-        path: RoutePath.profile,
+        path: RoutePath.profile ,
         icon: ProfileIcon,
         text: 'Профиль',
         authOnly: true

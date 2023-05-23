@@ -1,0 +1,12 @@
+.articleList.row {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.articleList.tile {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}

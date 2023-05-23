@@ -2,10 +2,10 @@ import cls from './SidebarItem.module.scss'
 import { FC } from 'react'
 import { AppLink, AppLinkTheme } from '06_shared/ui/AppLink/AppLink'
 import { useTranslation } from 'react-i18next'
-import { SidebarItemType } from '../../model/item'
 import { classNames } from '06_shared/lib/classNames/classNames'
 import { useAppSelector } from '06_shared/lib/hooks'
 import { getUserAuthData } from '05_entities/User'
+import { SidebarItemType } from '../../model/types/sidebar'
 
 interface SidebarItemProps {
     className?: string
