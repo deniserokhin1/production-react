@@ -11,11 +11,7 @@ interface AppRouterProps {
 
 export const AppRouter: FC<AppRouterProps> = () => {
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
-        const element = (
-            <Suspense fallback={<Pageloader />}>
-                <div className="page-wrapper">{route.element}</div>
-            </Suspense>
-        )
+        const element = <Suspense fallback={<Pageloader />}>{route.element}</Suspense>
 
         return (
             <Route

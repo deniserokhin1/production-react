@@ -23,6 +23,7 @@ import { addCommentForArticle } from '../../model/services/addCommentForArticle/
 import { Button } from '06_shared/ui/Button'
 import { ThemeButton } from '06_shared/ui/Button/Button'
 import { RoutePath } from '06_shared/config/routeConfig/routeConfig'
+import { Page } from '06_shared/ui/Page/Page/Page'
 
 interface ArticleDetailsPageProps {
     className?: string
@@ -63,7 +64,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-            <div className={classNames('', {}, [className])}>
+            <Page className={classNames('', {}, [className])}>
                 <Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
                     {t('Назад к списку')}
                 </Button>
@@ -75,7 +76,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
                     className={cls.comment}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     )
 }

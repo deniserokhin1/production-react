@@ -13,7 +13,7 @@ interface ArticleListProps {
 }
 
 const getSkeletons = (view: ArticleView) =>
-    new Array(view === ArticleView.TILE ? 9 : 3)
+    new Array(view === ArticleView.TILE ? 9 : 4)
         .fill(0)
         .map((item, index) => (
             <ArticleListItemSkeleton className={cls.card} key={index} view={view} />
@@ -26,17 +26,14 @@ export const ArticleList: FC<ArticleListProps> = (props) => {
         return <ArticleListItem article={article} view={view} key={article.id} />
     }
 
-    if (isLoading) {
-        return (
-            <div className={classNames(cls.articleList, {}, [className, cls[view]])}>
-                {getSkeletons(view)}
-            </div>
-        )
-    }
-
     return (
         <div className={classNames(cls.articleList, {}, [className, cls[view]])}>
             {!!articles.length && articles.map(renderArticle)}
+            {isLoading && (
+                <div className={classNames(cls.articleList, {}, [className, cls[view]])}>
+                    {getSkeletons(view)}
+                </div>
+            )}
         </div>
     )
 }

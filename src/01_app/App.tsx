@@ -6,18 +6,15 @@ import { Sidebar } from '03_widgets/Sidebar'
 import { Suspense, useEffect } from 'react'
 import { getUserInited, userActions } from '05_entities/User'
 import { useAppDispatch, useAppSelector } from '06_shared/lib/hooks'
-import { useDispatch, useSelector } from 'react-redux'
 
 export const App = () => {
     const { theme } = useTheme()
     const mods = {}
 
     const dispatch = useAppDispatch()
-    // const dispatch = useDispatch()
 
 
     const inited = useAppSelector(getUserInited)
-    // const inited = useSelector(getUserInited)
 
     useEffect(() => {
         dispatch(userActions.initAuthData())
