@@ -34,6 +34,7 @@ const articlePageSlice = createSlice({
             ) as ArticleView
             state.view = view
             state.limit = view === ArticleView.ROW ? 4 : 9
+            state._inited = true
         },
         setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload

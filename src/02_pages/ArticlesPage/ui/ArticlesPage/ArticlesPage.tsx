@@ -13,13 +13,13 @@ import {
 } from '../../model/slices/ArticlePageSlice'
 import { useInitialEffect } from '06_shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useAppDispatch, useAppSelector } from '06_shared/lib/hooks'
-import { fetchArticleList } from '../../model/services/fetchArticleList/fetchArticleList'
 import {
     getArticlePageIsLoading,
     getArticlePageView,
 } from '../../model/selectors/articlePageSelectors'
 import { Page } from '06_shared/ui/Page/Page/Page'
-import { fetchNextArticlePage } from '02_pages/ArticlesPage/model/services/fetchNextArticlePage/fetchNextArticlePage'
+import { fetchNextArticlePage } from '../../model/services/fetchNextArticlePage/fetchNextArticlePage'
+import { initArticlePage } from '../../model/services/initArticlePage/initArticlePage'
 
 interface ArticlesPageProps {
     className?: string
@@ -38,8 +38,7 @@ const ArticlesPage: FC<ArticlesPageProps> = (props) => {
     const view = useAppSelector(getArticlePageView)
 
     useInitialEffect(() => {
-        dispatch(articlePageActions.initState())
-        dispatch(fetchArticleList({ page: 1 }))
+        dispatch(initArticlePage())
     })
 
     const onChangeView = useCallback(

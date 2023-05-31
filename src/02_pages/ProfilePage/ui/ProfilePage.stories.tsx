@@ -5,7 +5,6 @@ import ProfilePage from './ProfilePage'
 import { StoreDecorator } from '06_shared/config/storybook/StoreDecorator/StoreDecorator'
 import { Currency } from '05_entities/Currency'
 import { Country } from '05_entities/CountrySelect'
-import avatar from '06_shared/assets/tests/avatar.png'
 
 export default {
     title: 'pages/ProfilePage',

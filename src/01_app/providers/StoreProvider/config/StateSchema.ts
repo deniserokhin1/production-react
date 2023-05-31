@@ -5,15 +5,8 @@ import { LoginSchema } from '04_features/AuthByUserName'
 import { ArticleDetailsSchema } from '05_entities/Article'
 import { ProfileSchema } from '05_entities/Profile'
 import { UserSchema } from '05_entities/User'
-import {
-    AnyAction,
-    CombinedState,
-    EnhancedStore,
-    Reducer,
-    ReducersMapObject,
-} from '@reduxjs/toolkit'
+import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit'
 import { AxiosInstance } from 'axios'
-import { NavigateOptions, To } from 'react-router-dom'
 
 export interface StateSchema {
     user: UserSchema
@@ -28,12 +21,14 @@ export interface StateSchema {
 }
 
 export type StateSchemaKey = keyof StateSchema
+export type MountedRedcuer = OptionalRecord<StateSchemaKey, boolean>
 
 export interface ReducerManger {
     getReducerMap: () => ReducersMapObject<StateSchema>
     reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>
     add: (key: StateSchemaKey, reducer: Reducer) => void
     remove: (key: StateSchemaKey) => void
+    getMountedRedcuer: () => MountedRedcuer
 }
 
 export interface ReduxStoreWidthManager extends EnhancedStore<StateSchema> {
@@ -42,7 +37,6 @@ export interface ReduxStoreWidthManager extends EnhancedStore<StateSchema> {
 
 export interface ThunkExtraArg {
     api: AxiosInstance
-    navigate?: (to: To, options?: NavigateOptions) => void
 }
 
 export interface ThunkConfig<T> {
