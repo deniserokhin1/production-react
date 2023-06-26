@@ -17,9 +17,9 @@ import {
     getArticlePageIsLoading,
     getArticlePageView,
 } from '../../model/selectors/articlePageSelectors'
-import { Page } from '06_shared/ui/Page/Page/Page'
 import { fetchNextArticlePage } from '../../model/services/fetchNextArticlePage/fetchNextArticlePage'
 import { initArticlePage } from '../../model/services/initArticlePage/initArticlePage'
+import { Page } from '03_widgets/Page/Page'
 
 interface ArticlesPageProps {
     className?: string

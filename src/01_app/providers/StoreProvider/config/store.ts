@@ -1,21 +1,15 @@
-import {
-    CombinedState,
-    Reducer,
-    ReducersMapObject,
-    configureStore,
-} from '@reduxjs/toolkit'
+import { CombinedState, Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { StateSchema, ThunkExtraArg } from './StateSchema'
 import { userReducer } from '05_entities/User'
 import { createReducerManager } from './redcuerManager'
 import { $api } from '06_shared/api/api'
+import { uiReducer } from '04_features/ScrollSavePosition'
 
-export const createRedxuStore = (
-    initialState?: StateSchema,
-    asyncReducers?: ReducersMapObject<StateSchema>,
-) => {
+export const createRedxuStore = (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) => {
     const rootReducer: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
+        ui: uiReducer,
     }
 
     const reducerManager = createReducerManager(rootReducer)

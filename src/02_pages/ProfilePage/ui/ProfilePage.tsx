@@ -23,7 +23,7 @@ import { getProfileErrors } from '05_entities/Profile/model/selectors/getProfile
 import { Text, TextTheme } from '06_shared/ui/Text/Text'
 import { useInitialEffect } from '06_shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useParams } from 'react-router-dom'
-import { Page } from '06_shared/ui/Page/Page/Page'
+import { Page } from '03_widgets/Page/Page'
 
 const reducers: ReducersList = {
     profile: profileReducer,

@@ -2,6 +2,7 @@ import { ArticleDetailsCommentSchema } from '02_pages/ArticleDetailsPage/model/t
 import { ArticlePageSchema } from '02_pages/ArticlesPage'
 import { AddNewCommentSchema } from '04_features/AddNewComment'
 import { LoginSchema } from '04_features/AuthByUserName'
+import { UISchema } from '04_features/ScrollSavePosition'
 import { ArticleDetailsSchema } from '05_entities/Article'
 import { ProfileSchema } from '05_entities/Profile'
 import { UserSchema } from '05_entities/User'
@@ -10,6 +11,7 @@ import { AxiosInstance } from 'axios'
 
 export interface StateSchema {
     user: UserSchema
+    ui: UISchema
 
     //асинхронные редьюсеры
     loginForm?: LoginSchema
