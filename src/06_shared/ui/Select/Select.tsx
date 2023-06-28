@@ -1,30 +1,26 @@
 import { classNames } from '06_shared/lib/classNames/classNames'
 import cls from './Select.module.scss'
-import { ChangeEvent, FC, useMemo } from 'react'
+import { ChangeEvent, useMemo } from 'react'
 
-export interface SelectOption {
-    value: string
+export interface SelectOption<T extends string> {
+    value: T
     content: string
 }
 
-interface SelectProps {
+interface SelectProps<T extends string> {
     className?: string
     label?: string
-    options?: SelectOption[]
-    value?: string
-    onChange?: (value: string) => void
+    options?: SelectOption<T>[]
+    value?: T
+    onChange?: (value: T) => void
     readonly?: boolean
 }
 
-export const Select: FC<SelectProps> = ({
-    label,
-    options,
-    onChange,
-    value,
-    readonly,
-}) => {
+export const Select = <T extends string>(props: SelectProps<T>) => {
+    const { label, options, onChange, value, readonly, className } = props
+    
     const optionList = useMemo(() => {
-        return options?.map((item: SelectOption) => (
+        return options?.map((item: SelectOption<T>) => (
             <option className={cls.option} value={item.value} key={item.value}>
                 {item.content}
             </option>
@@ -32,11 +28,11 @@ export const Select: FC<SelectProps> = ({
     }, [options])
 
     const changeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        onChange?.(e.target.value)
+        onChange?.(e.target.value as T)
     }
 
     return (
-        <div className={classNames(cls.Wrapper)}>
+        <div className={classNames(cls.Wrapper, {}, [className])}>
             {label && <span className={cls.label}>{label}</span>}
             <select
                 className={cls.select}

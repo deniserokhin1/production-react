@@ -5,7 +5,7 @@ import { Page } from '03_widgets/Page/Page'
 const MainPage = () => {
     const { t } = useTranslation()
 
-    return <Page className={cls.container}>{t('Главная')}</Page>
+    return <div className={cls.container}>{t('Главная')}</div>
 }
 
 export default MainPage

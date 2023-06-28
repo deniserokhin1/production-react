@@ -1,6 +1,7 @@
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails'
 export { IArticle } from './model/types/article'
 export { ArticleDetailsSchema } from './model/types/articleDetailsSchema'
-export { ArticleView } from './model/types/article'
+export { ArticleView, ArticleSortField } from './model/types/article'
 export { ArticleList } from './ui/ArticleList/ArticleList'
 export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector'
+export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs'

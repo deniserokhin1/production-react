@@ -38,7 +38,7 @@ export const Page: FC<PageProps> = (props) => {
                 path: pathname,
             })
         )
-    }, 500)
+    }, 200)
 
     return (
         <section
@@ -47,7 +47,7 @@ export const Page: FC<PageProps> = (props) => {
             className={classNames(cls.page, {}, [className])}
         >
             {children}
-            <div ref={triggerRef} />
+            {onScrollEnd && <div className={cls.trigger} ref={triggerRef} />}
         </section>
     )
 }

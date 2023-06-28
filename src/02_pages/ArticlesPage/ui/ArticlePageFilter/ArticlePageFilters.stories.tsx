@@ -1,12 +1,21 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import ArticlesPage from './ArticlesPage'
-import { StoreDecorator } from '06_shared/config/storybook/StoreDecorator/StoreDecorator'
-import { ArticleView } from '05_entities/Article'
+import { ArticlePageFilters } from './ArticlePageFilters'
 import {
     ArticleBlockType,
+    ArticleSortField,
     ArticleType,
+    ArticleView,
     IArticle,
 } from '05_entities/Article/model/types/article'
+import { StoreDecorator } from '06_shared/config/storybook/StoreDecorator/StoreDecorator'
+
+export default {
+    title: 'pages/Article/ArticlesPageFilters',
+    component: ArticlePageFilters,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+} as ComponentMeta<typeof ArticlePageFilters>
 
 const artice: IArticle[] = [
     {
@@ -63,15 +72,9 @@ const artice: IArticle[] = [
     },
 ]
 
-export default {
-    title: 'pages/Article/ArticlesPage',
-    component: ArticlesPage,
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
-} as ComponentMeta<typeof ArticlesPage>
-
-const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage {...args} />
+const Template: ComponentStory<typeof ArticlePageFilters> = (args) => (
+    <ArticlePageFilters {...args} />
+)
 
 export const Normal = Template.bind({})
 Normal.args = {}
@@ -82,8 +85,9 @@ Normal.decorators = [
             hasMore: true,
             page: 1,
             isLoading: false,
-            entities: { '1': artice[0], '2': artice[1] },
-            ids: [1, 2],
+            entities: { '1': artice[1] },
+            ids: [1],
+            sort: ArticleSortField.VIEWS,
         },
     }),
 ]
