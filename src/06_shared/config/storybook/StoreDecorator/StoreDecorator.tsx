@@ -5,15 +5,15 @@ import { profileReducer } from '05_entities/Profile'
 import { ReducersList } from '06_shared/lib/components/DynamicModuleLoader/DynamicModuleLoader'
 import { articleDetailsReducer } from '05_entities/Article/model/slice/articleDetailsSlice'
 import { addNewCommentReducer } from '04_features/AddNewComment/model/slices/addNewCommnetSlice'
-import { articleDetailsCommentsReducer } from '02_pages/ArticleDetailsPage/model/slice/articleDetailsCommentsSlice'
 import { articlePageReducer } from '02_pages/ArticlesPage/model/slices/ArticlePageSlice'
+import { articleDetailsPageReducer } from '02_pages/ArticleDetailsPage/model/slice'
 
 const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
     profile: profileReducer,
     articleDetails: articleDetailsReducer,
     addnewComment: addNewCommentReducer,
-    articleDetailsComments: articleDetailsCommentsReducer,
+    articleDetailsPage: articleDetailsPageReducer,
     articlePage: articlePageReducer,
 }
 

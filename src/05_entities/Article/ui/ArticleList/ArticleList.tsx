@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, HTMLAttributeAnchorTarget } from 'react'
 import { classNames } from '06_shared/lib/classNames/classNames'
 import cls from './ArticleList.module.scss'
 import { ArticleView, IArticle } from '../../model/types/article'
@@ -12,6 +12,7 @@ interface ArticleListProps {
     articles: IArticle[]
     isLoading?: boolean
     view?: ArticleView
+    target?: HTMLAttributeAnchorTarget
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -22,12 +23,19 @@ const getSkeletons = (view: ArticleView) =>
         ))
 
 export const ArticleList: FC<ArticleListProps> = (props) => {
-    const { className, articles, isLoading, view = ArticleView.TILE } = props
+    const { className, articles, isLoading, view = ArticleView.TILE, target } = props
 
     const { t } = useTranslation('article')
 
     const renderArticle = (article: IArticle) => {
-        return <ArticleListItem article={article} view={view} key={article.id} />
+        return (
+            <ArticleListItem
+                article={article}
+                view={view}
+                key={article.id}
+                target={target}
+            />
+        )
     }
 
     if (!isLoading && !articles.length) {

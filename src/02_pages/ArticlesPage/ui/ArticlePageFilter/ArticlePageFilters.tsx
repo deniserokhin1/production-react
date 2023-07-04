@@ -23,7 +23,7 @@ import { ArticleSortSelector } from '05_entities/Article/ui/ArticleSortSelector/
 import { SortOrder } from '06_shared/types'
 import { fetchArticleList } from '../../model/services/fetchArticleList/fetchArticleList'
 import { useDebounce } from '06_shared/lib/hooks/useDebounce/useDebouce'
-import { TabItem, Tabs } from '06_shared/ui/Tabs/Tabs'
+import { TabItem } from '06_shared/ui/Tabs/Tabs'
 import { ArticleType } from '05_entities/Article/model/types/article'
 
 interface ArticlePageFilterProps {
@@ -75,9 +75,9 @@ export const ArticlePageFilters: FC<ArticlePageFilterProps> = (props) => {
         (search: string) => {
             dispatch(articlePageActions.setSearch(search))
             dispatch(articlePageActions.setPage(1))
-            fetchData()
+            deboucedFetchData()
         },
-        [fetchData, dispatch]
+        [deboucedFetchData, dispatch]
     )
 
     const onChangeType = useCallback(
